@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -34,12 +33,12 @@
                 </DropShadow>
             </effect>
         </Rectangle>
-        <Label alignment="CENTER" layoutX="397.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Просмотр таблиц" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="397.0">
+        <Label alignment="CENTER" layoutX="397.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="397.0">
             <font>
                 <Font name="Segoe UI Semibold Italic" size="42.0" />
             </font>
         </Label>
-        <Button layoutX="972.0" layoutY="183.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css" textFill="#596680" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="183.0">
+        <Button layoutX="972.0" layoutY="179.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" stylesheets="@../../../css_files/button_icon.css" textFill="#596680" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="179.0">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>
@@ -48,15 +47,9 @@
                 </ImageView>
             </graphic>
         </Button>
-        <TableView editable="true" layoutX="519.0" layoutY="141.0" prefHeight="373.0" prefWidth="453.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-                <TableColumn prefWidth="75.0" text="Column X" />
-            </columns>
-        </TableView>
+        <TableView editable="true" layoutX="519.0" layoutY="141.0" prefHeight="373.0" prefWidth="453.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <TextField layoutX="144.0" layoutY="182.0" prefHeight="38.0" prefWidth="258.0" promptText="Название таблицы по названию..." style="-fx-background-radius: 12; -fx-background-color: #FFFFFF;" AnchorPane.topAnchor="182.0" />
-        <Button layoutX="972.0" layoutY="108.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
+        <Button layoutX="972.0" layoutY="108.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>

@@ -1,5 +1,6 @@
 package com.course.courseud;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class SelectsController {
     ObservableList<String> tablesList = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<String> selectsTable;
+    private TableView<ObservableList<String>> selectsTable;
 
     @FXML
     public void initialize() {
@@ -71,15 +72,34 @@ public class SelectsController {
             ResultSetMetaData metaData = resultSet.getMetaData();
             selectsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-            ArrayList<TableColumn<String, String>> cols = new ArrayList<>();
+            ArrayList<TableColumn<ObservableList<String>, String>> cols = new ArrayList<>();
             for (int i = 0; i < metaData.getColumnCount(); i++) {
-                cols.add(new TableColumn<String, String>(metaData.getColumnName(i + 1)));
+                cols.add(new TableColumn<>(metaData.getColumnName(i + 1)));
                 selectsTable.getColumns().add(cols.get(i));
             }
 
-            // next - try
+            //создаем объект класса ObservableList<ObservableList> для хранения данных таблицы
+            ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
 
-            
+            //указываем соответствующие для каждого столбца значения из вложенных ObservableList
+            for (int i = 0; i < cols.size(); i++) {
+                final int j = i;
+                cols.get(i).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().get(j)));
+                selectsTable.getColumns().add(cols.get(i));
+            }
+
+            //заполняем таблицу данными, используя цикл
+            while (resultSet.next()) {
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    row.add(resultSet.getString(i));
+                }
+                System.out.println();
+                data.add(row);
+            }
+
+            //устанавливаем данные таблицы
+            selectsTable.setItems(data);
 
         } catch (SQLException e) {
             e.printStackTrace();
