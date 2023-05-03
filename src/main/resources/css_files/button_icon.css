@@ -1,0 +1,7 @@
+.button {
+    -fx-pref-height: 36px;
+    -fx-pref-width: 36px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+}
