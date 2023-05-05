@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 
 import java.io.IOException;
@@ -26,14 +27,14 @@ public class SelectsController {
     @FXML
     private Button clearButton;
     @FXML
-    private Button findButton;
-
-    @FXML
     private ComboBox<String> tablesComboBox;
     ObservableList<String> tablesList = FXCollections.observableArrayList();
-
     @FXML
     private TableView<ObservableList<String>> selectsTable;
+    @FXML
+    private TextField whereTextField;
+    @FXML
+    private ComboBox<String> orderByComboBox;
 
     @FXML
     public void initialize() {
@@ -46,9 +47,8 @@ public class SelectsController {
     private void clearAllFields() {
         try {
             selectsTable.getColumns().clear();
-            tablesComboBox.setValue("Выбрать из доступных таблиц");
-        } catch (Exception e) {
-            System.out.println("Все элементы очищены");
+            whereTextField.setPromptText("Ввести условие для выборки...");
+        } catch (Exception ignored) {
         }
     }
 
@@ -67,11 +67,11 @@ public class SelectsController {
     private void makeTableView() {
         try {
             String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
+            // Делаем запрос и получаем метаданные
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             ResultSetMetaData metaData = resultSet.getMetaData();
-            selectsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
+            // Создаём колонки
             ArrayList<TableColumn<ObservableList<String>, String>> cols = new ArrayList<>();
             for (int i = 0; i < metaData.getColumnCount(); i++) {
                 cols.add(new TableColumn<>(metaData.getColumnName(i + 1)));
@@ -80,14 +80,11 @@ public class SelectsController {
 
             //создаем объект класса ObservableList<ObservableList> для хранения данных таблицы
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
-
             //указываем соответствующие для каждого столбца значения из вложенных ObservableList
             for (int i = 0; i < cols.size(); i++) {
                 final int j = i;
                 cols.get(i).setCellValueFactory(param -> new SimpleStringProperty(param.getValue().get(j)));
-                selectsTable.getColumns().add(cols.get(i));
             }
-
             //заполняем таблицу данными, используя цикл
             while (resultSet.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
@@ -97,7 +94,6 @@ public class SelectsController {
                 System.out.println();
                 data.add(row);
             }
-
             //устанавливаем данные таблицы
             selectsTable.setItems(data);
 

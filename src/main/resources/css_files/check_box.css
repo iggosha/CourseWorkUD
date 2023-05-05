@@ -1,0 +1,18 @@
+.check-box:determinate .text {
+
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 20px;
+}
+
+.check-box:determinate:selected {
+    -fx-text-fill: #FFFFFF;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #6699FF;
+}
+
+.check-box:selected .box {
+
+    -fx-background-color: #FFFFFF;
+}
