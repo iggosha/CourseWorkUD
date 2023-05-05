@@ -13,6 +13,7 @@ public class InsertsController {
     @FXML
     private Button goToMenuButton;
 
+    UtilsController utilsController = new UtilsController();
     @FXML
     public void initialize() {
         goToMenuButton.setOnAction(actionEvent -> openNewWindow(goToMenuButton, "menu.fxml"));
