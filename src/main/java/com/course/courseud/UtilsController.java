@@ -62,11 +62,10 @@ public class UtilsController {
             ArrayList<TableColumn<ObservableList<String>, String>> cols = new ArrayList<>();
             for (int i = 0; i < metaData.getColumnCount(); i++) {
                 cols.add(new TableColumn<>(metaData.getColumnName(i + 1)));
-                tableView.getColumns().add(cols.get(i));
             }
-
+            tableView.getColumns().setAll(cols);
             //создаем объект класса ObservableList<ObservableList> для хранения данных таблицы
-            ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+            ObservableList<ObservableList<String>> allRows = FXCollections.observableArrayList();
             //указываем соответствующие для каждого столбца значения из вложенных ObservableList
             for (int i = 0; i < cols.size(); i++) {
                 final int j = i;
@@ -78,15 +77,13 @@ public class UtilsController {
                 for (int i = 1; i <= metaData.getColumnCount(); i++) {
                     row.add(resultSet.getString(i));
                 }
-                System.out.println();
-                data.add(row);
+                allRows.add(row);
             }
             //устанавливаем данные таблицы
-            tableView.setItems(data);
+            tableView.setItems(allRows);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 }

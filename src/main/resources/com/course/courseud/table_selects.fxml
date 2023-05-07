@@ -57,6 +57,6 @@
         <Button fx:id="goToMenuButton" layoutX="108.0" layoutY="18.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
       <ComboBox fx:id="orderByComboBox" layoutX="144.0" layoutY="281.0" prefHeight="36.0" prefWidth="258.0" promptText="Сортировать по колонке..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.topAnchor="318.0" />
       <TextField fx:id="whereTextField" layoutX="144.0" layoutY="169.0" promptText="Условие для выборки..." stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="206.0" />
-      <CheckBox fx:id="ascDesc" layoutX="144.0" layoutY="335.0" mnemonicParsing="false" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" AnchorPane.topAnchor="358.0" />
+      <CheckBox fx:id="ascCheckBox" layoutX="144.0" layoutY="335.0" mnemonicParsing="false" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" AnchorPane.topAnchor="358.0" />
     </children>
 </AnchorPane>
