@@ -12,10 +12,9 @@ import java.sql.SQLException;
 
 public class UDApp extends Application {
     public static Connection connection;
-
     public static final String DB_URL = "jdbc:postgresql://localhost:5432/labsud";
-    public static final String DB_USER = "postgres";
-    public static final String DB_PASSWORD = "3gor";
+    public static String DB_USER = "postgres";
+    public static String DB_PASSWORD = "3gor";
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -28,13 +27,17 @@ public class UDApp extends Application {
     }
 
     public static void main(String[] args) {
+        launch();
+    }
+
+    public static void connectUser() {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        launch();
     }
 }
 
 // #6699ff
+// guest 123 admin 3gor

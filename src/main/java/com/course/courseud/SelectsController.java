@@ -84,3 +84,10 @@ public class SelectsController {
 }
 
 // TODO add groupby
+/* Добавить просмотры
+
+            rsMetaData = dbMetaData.getTables(null, null, null, new String[]{"VIEW"});
+            while (rsMetaData.next()) {
+                tablesList.add(rsMetaData.getString("TABLE_NAME"));
+            }
+ */

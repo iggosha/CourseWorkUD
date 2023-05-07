@@ -6,21 +6,37 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static com.course.courseud.UDApp.connection;
 
 public class UtilsController {
-
     public void clearTable(TableView tableView) {
         tableView.getColumns().clear();
+    }
+
+    public void showSqlExceptionWindow(SQLException e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Произошла ошибка");
+        alert.setHeaderText(null);
+        VBox dialogPaneContent = new VBox();
+        Label label = new Label(e.getMessage());
+        String stackTrace = Arrays.stream(e.getStackTrace())
+                .map(StackTraceElement::toString)
+                .collect(Collectors.joining("\n"));
+        TextArea textArea = new TextArea();
+        textArea.setText(stackTrace);
+        dialogPaneContent.getChildren().addAll(label, textArea);
+        alert.getDialogPane().setContent(dialogPaneContent);
+        alert.showAndWait();
     }
 
     public void openNewWindow(Button button, String name) {
@@ -47,7 +63,8 @@ public class UtilsController {
                 tablesList.add(rsMetaData.getString("TABLE_NAME"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            e.printStackTrace();
+            showSqlExceptionWindow(e);
         }
         return tablesList;
     }
@@ -83,6 +100,7 @@ public class UtilsController {
             tableView.setItems(allRows);
         } catch (SQLException e) {
             e.printStackTrace();
+            showSqlExceptionWindow(e);
         }
     }
 

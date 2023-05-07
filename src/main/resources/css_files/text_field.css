@@ -6,3 +6,12 @@
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
 }
+
+.text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-pref-width: 480px;
+    -fx-pref-height: 144px;
+    -fx-background-radius: 12px;
+    -fx-font-family: "Trebuchet MS";
+    -fx-font-size: 24px;
+}
