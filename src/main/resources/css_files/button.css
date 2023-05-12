@@ -8,3 +8,12 @@
     -fx-text-fill: #334C80;
     -fx-cursor: hand;
     }
+
+.button-icon {
+    -fx-pref-height: 36px;
+    -fx-pref-width: 36px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 2px;
+    -fx-cursor: hand;
+    -fx-translate-y: 2px;
+}

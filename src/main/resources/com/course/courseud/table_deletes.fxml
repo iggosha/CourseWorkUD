@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #527ACC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.SelectsController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="576.0" layoutX="108.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0" AnchorPane.topAnchor="72.0">
-         <effect>
-            <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" width="255.0">
-               <color>
-                  <Color red="0.20000000298023224" green="0.2980392277240753" blue="0.501960813999176" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Rectangle>
-      <Rectangle fill="#527acc" height="72.0" layoutY="13.0" strokeType="INSIDE" strokeWidth="0.0" width="1080.0" AnchorPane.topAnchor="0.0">
-         <effect>
-            <DropShadow blurType="GAUSSIAN" height="163.5" radius="104.125" width="255.0">
-               <color>
-                  <Color red="0.20000000298023224" green="0.2980392277240753" blue="0.501960813999176" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Rectangle>
-      <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
-      <TableView fx:id="selectsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="499.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-      <Button fx:id="clearButton" layoutX="920.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
-               <image>
-                  <Image url="@../../../icons/icons8-broom-100_blue.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
-      <Button fx:id="goToMenuButton" layoutX="108.0" layoutY="18.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
-      <ComboBox fx:id="orderByComboBox" layoutX="144.0" layoutY="281.0" prefHeight="36.0" prefWidth="258.0" promptText="Сортировать по колонке..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.topAnchor="318.0" />
-      <TextField fx:id="whereTextField" layoutX="144.0" layoutY="169.0" promptText="Условие для выборки..." stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="206.0" />
-      <CheckBox fx:id="ascCheckBox" layoutX="144.0" layoutY="335.0" mnemonicParsing="false" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" AnchorPane.topAnchor="358.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #527ACC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.DeletesController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="576.0" layoutX="108.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0" AnchorPane.topAnchor="72.0">
+            <effect>
+                <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" width="255.0">
+                    <color>
+                        <Color red="0.20000000298023224" green="0.2980392277240753" blue="0.501960813999176" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Rectangle>
+        <Rectangle fill="#527acc" height="72.0" layoutY="13.0" strokeType="INSIDE" strokeWidth="0.0" width="1080.0" AnchorPane.topAnchor="0.0">
+            <effect>
+                <DropShadow blurType="GAUSSIAN" height="163.5" radius="104.125" width="255.0">
+                    <color>
+                        <Color red="0.20000000298023224" green="0.2980392277240753" blue="0.501960813999176" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Rectangle>
+        <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
+        <TableView fx:id="deletesTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="400.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
+        <Button fx:id="clearButton" layoutX="920.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
+                    <image>
+                        <Image url="@../../../icons/icons8-broom-100_blue.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
+        <Button fx:id="goToMenuButton" layoutX="108.0" layoutY="18.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
+      <Button fx:id="deleteButton" layoutX="633.0" layoutY="561.0" mnemonicParsing="false" stylesheets="@../../../css_files/button_text.css" text="Удалить" AnchorPane.bottomAnchor="128.0" />
+      <Label layoutX="297.0" layoutY="666.0" text="Выберите строку из таблицы  для удаления" textFill="WHITE">
+         <font>
+            <Font name="Trebuchet MS" size="24.0" />
+         </font>
+      </Label>
+    </children>
 </AnchorPane>

@@ -34,7 +34,7 @@
             </effect>
         </Rectangle>
         <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Просмотр данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
-        <Button fx:id="customQueryButton" layoutX="1028.0" layoutY="676.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css" textFill="#596680" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="676.0">
+        <Button fx:id="customQueryButton" layoutX="1022.0" layoutY="672.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" style="-fx-background-radius: 2;" styleClass="button-icon" stylesheets="@../../../css_files/button.css" textFill="#596680" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="672.0">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>
@@ -44,7 +44,7 @@
             </graphic>
         </Button>
         <TableView fx:id="selectsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="499.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="clearButton" layoutX="920.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
+        <Button fx:id="clearButton" layoutX="914.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>

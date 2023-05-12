@@ -104,4 +104,15 @@ public class UtilsController {
         }
     }
 
+    public void updateTableWithSqlQuery(String sqlQuery) {
+        try {
+            // Делаем запрос и получаем метаданные
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sqlQuery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showSqlExceptionWindow(e);
+        }
+    }
+
 }

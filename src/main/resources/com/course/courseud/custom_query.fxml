@@ -47,7 +47,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="clearButton" layoutX="969.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
+      <Button fx:id="clearButton" layoutX="969.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" stylesheets="@../../../css_files/button.css">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                <image>
@@ -57,7 +57,7 @@
          </graphic>
       </Button>
       <Button fx:id="goToSelectsButton" layoutX="29.0" layoutY="18.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
-      <TextField fx:id="customQueryTextField" layoutX="122.0" layoutY="597.0" prefHeight="36.0" prefWidth="857.0" promptText="Введите SQL-команду">
+      <TextField fx:id="customQueryTextField" layoutX="122.0" layoutY="597.0" prefHeight="36.0" prefWidth="857.0" promptText="Введите SQL-команду" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css">
          <font>
             <Font size="24.0" />
          </font>

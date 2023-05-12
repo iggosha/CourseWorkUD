@@ -29,7 +29,11 @@ public class CustomController {
     private void makeCustomQuery() {
         customQueryTable.getColumns().clear();
         String sqlQuery = customQueryTextField.getText();
-        utilsController.fillTableWithSqlQuery(customQueryTable, sqlQuery);
+        if (sqlQuery.contains("SELECT")) {
+            utilsController.fillTableWithSqlQuery(customQueryTable, sqlQuery);
+        } else {
+            utilsController.updateTableWithSqlQuery(sqlQuery);
+        }
     }
 
 
