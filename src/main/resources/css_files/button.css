@@ -17,3 +17,12 @@
     -fx-cursor: hand;
     -fx-translate-y: 2px;
 }
+
+.button-text {
+    -fx-pref-height: 36px;
+    -fx-pref-width: 108px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 2px;
+    -fx-cursor: hand;
+    -fx-translate-y: 2px;
+}

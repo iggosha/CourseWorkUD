@@ -34,7 +34,7 @@
         </Rectangle>
         <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
         <TableView fx:id="deletesTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="400.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="clearButton" layoutX="920.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" stylesheets="@../../../css_files/button_icon.css">
+        <Button fx:id="clearButton" layoutX="907.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" style="-fx-background-radius: 2;" styleClass="button-icon" stylesheets="@../../../css_files/button.css">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>
@@ -45,7 +45,7 @@
         </Button>
         <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <Button fx:id="goToMenuButton" layoutX="108.0" layoutY="18.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
-      <Button fx:id="deleteButton" layoutX="633.0" layoutY="561.0" mnemonicParsing="false" stylesheets="@../../../css_files/button_text.css" text="Удалить" AnchorPane.bottomAnchor="128.0" />
+      <Button fx:id="deleteButton" layoutX="633.0" layoutY="557.0" mnemonicParsing="false" styleClass="button-text" stylesheets="@../../../css_files/button.css" text="Удалить" AnchorPane.bottomAnchor="127.0" />
       <Label layoutX="297.0" layoutY="666.0" text="Выберите строку из таблицы  для удаления" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS" size="24.0" />
