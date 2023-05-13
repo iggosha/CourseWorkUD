@@ -18,9 +18,21 @@
 
 .big-text-field {
     -fx-background-color: #FFFFFF;
-    -fx-pref-width: 720px;
+    -fx-pref-width: 792px;
     -fx-pref-height: 36px;
     -fx-background-radius: 12px;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 24px;
+}
+
+.text-field:hover {
+    -fx-background-color: #F0F0FF;
+}
+
+.text-area:hover  {
+    -fx-background-color: #F0F0FF;
+}
+
+.big-text-field:hover  {
+    -fx-background-color: #F0F0FF;
 }

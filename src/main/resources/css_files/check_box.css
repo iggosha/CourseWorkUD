@@ -1,5 +1,4 @@
 .check-box:determinate .text {
-
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 20px;
 }
@@ -13,6 +12,5 @@
 }
 
 .check-box:selected .box {
-
     -fx-background-color: #FFFFFF;
 }

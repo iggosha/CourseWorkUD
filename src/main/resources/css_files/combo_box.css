@@ -6,3 +6,7 @@
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
 }
+
+.combo-box:hover {
+    -fx-background-color: #F0F0FF;
+}

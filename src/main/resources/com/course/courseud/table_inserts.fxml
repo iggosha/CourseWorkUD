@@ -32,7 +32,7 @@
                 </DropShadow>
             </effect>
         </Rectangle>
-        <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Вставка данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
+        <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Добавление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
         <TableView fx:id="insertsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="400.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <Button fx:id="clearButton" layoutX="914.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css">
             <graphic>

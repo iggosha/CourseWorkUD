@@ -33,18 +33,14 @@ public class DeletesController {
 
     private void makeTableView() {
         deletesTable.getColumns().clear();
-        String sqlQuery = "SELECT * FROM ";
-        // Получаем данные из выбранной таблицы
-        sqlQuery = sqlQuery + tablesComboBox.getValue();
+        String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
         utilsController.fillTableWithSqlQuery(deletesTable, sqlQuery);
     }
-
 
     private void deleteRow() {
         String sqlQuery = "DELETE FROM " + tablesComboBox.getValue() + " WHERE " +
                 deletesTable.getColumns().get(0).getText() + " = " + deletesTable.getSelectionModel().getSelectedItem().get(0);
         utilsController.updateTableWithSqlQuery(sqlQuery);
         makeTableView();
-
     }
 }

@@ -63,9 +63,7 @@ public class SelectsController {
 
     private void makeTableView() {
         selectsTable.getColumns().clear();
-        String sqlQuery = "SELECT * FROM ";
-        // Получаем данные из выбранной таблицы
-        sqlQuery = sqlQuery + tablesComboBox.getValue();
+        String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
         // Добавляем WHERE, если есть
         if (!whereTextField.getText().isEmpty()) {
             sqlQuery = sqlQuery + " WHERE " + whereTextField.getText();
@@ -83,7 +81,7 @@ public class SelectsController {
     }
 }
 
-/* TODO Добавить просмотры
+/* TODO Добавить просмотры, гостевой вход с просмотрами, изменение, дизайн как у кастома
 
             rsMetaData = dbMetaData.getTables(null, null, null, new String[]{"VIEW"});
             while (rsMetaData.next()) {

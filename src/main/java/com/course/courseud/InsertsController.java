@@ -4,6 +4,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InsertsController {
     @FXML
     private Button goToMenuButton;
@@ -33,9 +36,7 @@ public class InsertsController {
 
     private void makeTableView() {
         insertsTable.getColumns().clear();
-        String sqlQuery = "SELECT * FROM ";
-        // Получаем данные из выбранной таблицы
-        sqlQuery = sqlQuery + tablesComboBox.getValue();
+        String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
         utilsController.fillTableWithSqlQuery(insertsTable, sqlQuery);
     }
 
@@ -48,19 +49,18 @@ public class InsertsController {
         }
         sqlQuery.deleteCharAt(sqlQuery.length() - 2)
                 .append(") VALUES (");
-        String regex = "\\d+";
         String[] values = insertsTextField.getText().split(",");
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilderValues = new StringBuilder();
         for (String value : values) {
             value = value.trim();
-            if (!value.matches(regex)) {
+            if (!value.matches("\\d+")) {
                 value = "'" + value + "'";
             }
-            stringBuilder.append(value)
+            stringBuilderValues.append(value)
                     .append(", ");
         }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 2);
-        sqlQuery.append(stringBuilder)
+        stringBuilderValues.deleteCharAt(stringBuilderValues.length() - 2);
+        sqlQuery.append(stringBuilderValues)
                 .append(");");
         utilsController.updateTableWithSqlQuery(String.valueOf(sqlQuery));
         makeTableView();
