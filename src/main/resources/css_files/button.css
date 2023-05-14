@@ -1,29 +1,30 @@
 .button {
     -fx-font-family: "Consolas";
-    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
     -fx-background-color: #FFFFFF;
-    -fx-pref-width: 72px;
-    -fx-pref-height: 36px;
-    -fx-font-size: 16px;
-    -fx-text-fill: #334C80;
+    -fx-pref-width: 68px;
+    -fx-pref-height: 53px;
+    -fx-font-size: 24px;
+    -fx-text-fill: #6699FF;
     -fx-cursor: hand;
 }
 
 .button-icon {
-    -fx-pref-height: 36px;
-    -fx-pref-width: 36px;
+    -fx-pref-width: 60px;
+    -fx-pref-height: 42px;
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 6px;
     -fx-cursor: hand;
-    -fx-translate-y: 2px;
 }
 
 .button-text {
     -fx-font-family: "Trebuchet MS";
+    -fx-font-weight: normal;
     -fx-pref-height: 36px;
-    -fx-pref-width: 200px;
+    -fx-pref-width: 184px;
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 12px;
+    -fx-background-radius: 6px;
     -fx-cursor: hand;
     -fx-translate-y: 2px;
 }

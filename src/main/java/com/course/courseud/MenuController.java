@@ -32,6 +32,7 @@ public class MenuController {
         //authUser();// включить, connectUser ниже убрать
         connectUser();
     }
+
     public void authUser() {
         if (firstTimeAuth) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

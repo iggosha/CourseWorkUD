@@ -11,6 +11,8 @@ public class SelectsController {
     @FXML
     private Button clearButton;
     @FXML
+    private Button infoButton;
+    @FXML
     private Button customQueryButton;
     @FXML
     private ComboBox<String> tablesComboBox;
@@ -30,6 +32,7 @@ public class SelectsController {
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(selectsTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("toomuch words"));
         tablesComboBox.setOnAction(actionEvent -> {
             orderByComboBox.setOnAction(null);
             orderByComboBox.setValue("");
@@ -44,8 +47,6 @@ public class SelectsController {
             fillOrderByComboBox();
             orderByComboBox.setOnAction(actionEvent1 -> makeTableView());
         });
-        orderByComboBox.setOnAction(actionEvent -> makeTableView());
-        ascCheckBox.setOnAction(actionEvent -> makeTableView());
         fillTablesComboBox();
     }
 
@@ -61,28 +62,39 @@ public class SelectsController {
         orderByComboBox.setItems(columns);
     }
 
+    @FXML
     private void makeTableView() {
         selectsTable.getColumns().clear();
         String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
         // Добавляем WHERE, если есть
         if (!whereTextField.getText().isEmpty()) {
-            sqlQuery = sqlQuery + " WHERE " + whereTextField.getText();
+            String whereCondition = whereTextField.getText().trim();
+            whereCondition = whereCondition.replace(",", " AND ");
+            whereCondition = whereCondition.replace(" и ", " AND ");
+            whereCondition = whereCondition.replace(" или ", " OR ");
+            sqlQuery += " WHERE " + whereCondition;
         }
         // Добавляем ORDER BY, если есть
         if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
-            sqlQuery = sqlQuery + " ORDER BY " + orderByComboBox.getValue();
+            sqlQuery += " ORDER BY " + orderByComboBox.getValue();
             if (!ascCheckBox.isSelected()) {
-                sqlQuery = sqlQuery + " DESC ";
+                sqlQuery += " DESC ";
             } else {
-                sqlQuery = sqlQuery + " ASC ";
+                sqlQuery += " ASC ";
             }
         }
         utilsController.fillTableWithSqlQuery(selectsTable, sqlQuery);
     }
 }
 
-/* TODO Добавить просмотры, гостевой вход с просмотрами, изменение, дизайн как у кастома
+/* TODO Добавить гостевой вход с просмотрами, сделать комменты, вёрстку в аппах, maketable -> utils
 
+Structure:
+controls
+init
+fills
+query
+button
             rsMetaData = dbMetaData.getTables(null, null, null, new String[]{"VIEW"});
             while (rsMetaData.next()) {
                 tablesList.add(rsMetaData.getString("TABLE_NAME"));

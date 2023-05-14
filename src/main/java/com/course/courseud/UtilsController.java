@@ -40,6 +40,19 @@ public class UtilsController {
         alert.showAndWait();
     }
 
+    public void showInstructionWindow(String instruction) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Справка");
+        alert.setHeaderText(null);
+        VBox dialogPaneContent = new VBox();
+        Label label = new Label(instruction);
+//        TextArea textArea = new TextArea();
+//        textArea.setText(instruction);
+        dialogPaneContent.getChildren().addAll(label);
+        alert.getDialogPane().setContent(dialogPaneContent);
+        alert.showAndWait();
+    }
+
     public void openNewWindow(Button button, String name) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource(name));
@@ -105,21 +118,6 @@ public class UtilsController {
         }
     }
 
-    public HashMap<String, String> getColumnsAndTypes(String sqlQuery){
-        HashMap<String, String> columnsAndTypes = new HashMap<>();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlQuery);
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            for (int i = 0; i < metaData.getColumnCount(); i++) {
-                columnsAndTypes.put(metaData.getColumnName(i+1), metaData.getColumnTypeName(i+1));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return columnsAndTypes;
-    }
-
     public void updateTableWithSqlQuery(String sqlQuery) {
         try {
             // Делаем запрос и получаем метаданные
@@ -129,6 +127,21 @@ public class UtilsController {
             e.printStackTrace();
             showSqlExceptionWindow(e);
         }
+    }
+
+    public HashMap<String, String> getColumnsAndTypes(String sqlQuery) {
+        HashMap<String, String> columnsAndTypes = new HashMap<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            for (int i = 0; i < metaData.getColumnCount(); i++) {
+                columnsAndTypes.put(metaData.getColumnName(i + 1), metaData.getColumnTypeName(i + 1));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return columnsAndTypes;
     }
 
 }

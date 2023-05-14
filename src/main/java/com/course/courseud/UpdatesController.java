@@ -15,6 +15,8 @@ public class UpdatesController {
     @FXML
     private Button copyValuesButton;
     @FXML
+    private Button infoButton;
+    @FXML
     private ComboBox<String> tablesComboBox;
     @FXML
     private TableView<ObservableList<String>> updatesTable;
@@ -34,6 +36,7 @@ public class UpdatesController {
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(updatesTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("toomuch words"));
         tablesComboBox.setOnAction(actionEvent -> {
             orderByComboBox.setOnAction(null);
             orderByComboBox.setValue("");
@@ -48,10 +51,6 @@ public class UpdatesController {
             fillOrderByComboBox();
             orderByComboBox.setOnAction(actionEvent1 -> makeTableView());
         });
-        orderByComboBox.setOnAction(actionEvent -> makeTableView());
-        ascCheckBox.setOnAction(actionEvent -> makeTableView());
-        copyValuesButton.setOnAction(actionEvent -> fillUpdatesTextField());
-        updatesTextField.setOnAction(actionEvent -> updateRow());
         fillTablesComboBox();
     }
 
@@ -67,6 +66,7 @@ public class UpdatesController {
         orderByComboBox.setItems(columns);
     }
 
+    @FXML
     private void fillUpdatesTextField() {
         StringBuilder stringBuilder = new StringBuilder(updatesTable.getSelectionModel().getSelectedItem().toString());
         stringBuilder.deleteCharAt(stringBuilder.length() - 1)
@@ -74,25 +74,31 @@ public class UpdatesController {
         updatesTextField.setText(String.valueOf(stringBuilder));
     }
 
+    @FXML
     private void makeTableView() {
         updatesTable.getColumns().clear();
         String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
         // Добавляем WHERE, если есть
         if (!whereTextField.getText().isEmpty()) {
-            sqlQuery = sqlQuery + " WHERE " + whereTextField.getText();
+            String whereCondition = whereTextField.getText().trim();
+            whereCondition = whereCondition.replace(",", " AND ");
+            whereCondition = whereCondition.replace(" и ", " AND ");
+            whereCondition = whereCondition.replace(" или ", " OR ");
+            sqlQuery += " WHERE " + whereCondition;
         }
         // Добавляем ORDER BY, если есть
         if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
-            sqlQuery = sqlQuery + " ORDER BY " + orderByComboBox.getValue();
+            sqlQuery += " ORDER BY " + orderByComboBox.getValue();
             if (!ascCheckBox.isSelected()) {
-                sqlQuery = sqlQuery + " DESC ";
+                sqlQuery += " DESC ";
             } else {
-                sqlQuery = sqlQuery + " ASC ";
+                sqlQuery += " ASC ";
             }
         }
         utilsController.fillTableWithSqlQuery(updatesTable, sqlQuery);
     }
 
+    @FXML
     private void updateRow() {
         String sqlQuery = "UPDATE " + tablesComboBox.getValue() + " SET ";
         String[] oldValues = updatesTextField.getText().split(",");

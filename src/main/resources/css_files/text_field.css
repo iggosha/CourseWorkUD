@@ -1,8 +1,9 @@
 .text-field {
     -fx-background-color: #FFFFFF;
+    -fx-text-fill: #334C80;
     -fx-pref-width: 258px;
     -fx-pref-height: 36px;
-    -fx-background-radius: 12px;
+    -fx-background-radius: 6px;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 14px;
 }
@@ -11,7 +12,7 @@
     -fx-background-color: #FFFFFF;
     -fx-pref-width: 480px;
     -fx-pref-height: 144px;
-    -fx-background-radius: 12px;
+    -fx-background-radius: 6px;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 24px;
 }
@@ -20,7 +21,7 @@
     -fx-background-color: #FFFFFF;
     -fx-pref-width: 792px;
     -fx-pref-height: 36px;
-    -fx-background-radius: 12px;
+    -fx-background-radius: 6px;
     -fx-font-family: "Trebuchet MS";
     -fx-font-size: 24px;
 }
@@ -29,10 +30,10 @@
     -fx-background-color: #F0F0FF;
 }
 
-.text-area:hover  {
+.text-area:hover {
     -fx-background-color: #F0F0FF;
 }
 
-.big-text-field:hover  {
+.big-text-field:hover {
     -fx-background-color: #F0F0FF;
 }
