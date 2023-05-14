@@ -18,6 +18,8 @@ public class MenuController {
     private Button goToSelectsButton;
     @FXML
     private Button goToUpdatesButton;
+    @FXML
+    private Button goToReportsButton;
 
     static boolean firstTimeAuth = true;
 
@@ -29,6 +31,7 @@ public class MenuController {
         goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "table_selects.fxml"));
         goToUpdatesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToUpdatesButton, "table_updates.fxml"));
         goToDeletesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToDeletesButton, "table_deletes.fxml"));
+        goToReportsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToReportsButton, "table_reports.fxml"));
         //authUser();// включить, connectUser ниже убрать
         connectUser();
     }
