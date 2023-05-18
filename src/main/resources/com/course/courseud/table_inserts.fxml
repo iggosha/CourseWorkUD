@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #527ACC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.InsertsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #6699FF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.InsertsController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="576.0" layoutX="108.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0" AnchorPane.topAnchor="72.0">
             <effect>
@@ -34,7 +34,7 @@
         </Rectangle>
         <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Добавление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
         <TableView fx:id="insertsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="400.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="clearButton" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css">
+        <Button fx:id="clearButton" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="9.0">
             <graphic>
                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                     <image>
@@ -44,10 +44,10 @@
             </graphic>
         </Button>
         <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" onAction="#makeTableView" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="goToMenuButton" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" />
-      <TextField fx:id="insertsTextField" layoutX="144.0" layoutY="571.0" onAction="#insertRow" prefWidth="472.0" promptText="Введите значения для вставки в выбранную таблицу" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" />
-      <Button fx:id="infoButton" layoutX="998.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" />
-      <Button fx:id="customQueryButton" layoutX="1008.0" layoutY="664.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" textFill="#596680">
+        <Button fx:id="goToMenuButton" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="9.0" />
+      <TextField fx:id="insertsTextField" layoutX="144.0" layoutY="571.0" onAction="#insertRow" prefWidth="472.0" promptText="Введите значения для вставки в выбранную таблицу" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="540.0" />
+      <Button fx:id="infoButton" layoutX="998.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="9.0" />
+      <Button fx:id="customQueryButton" layoutX="1008.0" layoutY="664.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" textFill="#596680" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="18.0">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                <image>

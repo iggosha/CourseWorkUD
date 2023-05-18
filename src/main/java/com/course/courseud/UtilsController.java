@@ -85,6 +85,21 @@ public class UtilsController {
         return tablesList;
     }
 
+    public ObservableList<String> getViewsNames() {
+        ObservableList<String> tablesList = FXCollections.observableArrayList();
+        try {
+            DatabaseMetaData dbMetaData = connection.getMetaData();
+            ResultSet rsMetaData = dbMetaData.getTables(null, null, null, new String[]{"VIEW"});
+            while (rsMetaData.next()) {
+                tablesList.add(rsMetaData.getString("TABLE_NAME"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showSqlExceptionWindow(e);
+        }
+        return tablesList;
+    }
+
     public void fillTableWithSqlQuery(TableView tableView, String sqlQuery) {
         try {
             // Делаем запрос и получаем метаданные
