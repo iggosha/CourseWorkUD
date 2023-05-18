@@ -8,9 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -19,6 +17,10 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.io.File;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 public class SelectsController {
     @FXML
@@ -197,20 +199,41 @@ public class SelectsController {
 
     @FXML
     public void createDocReport() {
+        // Creating a blank Document
+        XWPFDocument document = new XWPFDocument();
+        XWPFTable table = document.createTable();
+        File file = new File("Отчёт.docx");
 
+        // Writing the Document in file system
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            // Creating a table
+            String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
+            sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
+            Statement statement = UDApp.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+
+            XWPFTableRow headerRow = table.getRow(0);
+            headerRow.getCell(0).setText(metaData.getColumnName(1));
+            for (int i = 2; i <= metaData.getColumnCount(); i++) {
+                headerRow.addNewTableCell().setText(metaData.getColumnName(i));
+            }
+
+            while (resultSet.next()) {
+                XWPFTableRow dataRow = table.createRow();
+                for (int i = 1; i <= metaData.getColumnCount(); i++) { // обход столбцов по индексу
+                    String value = resultSet.getString(i);
+                    dataRow.getCell(i - 1).setText(value);
+                }
+            }
+
+            document.write(fileOutputStream);
+            Desktop.getDesktop().browse(file.toURI());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            utilsController.showSqlExceptionWindow(e);
+            throw new RuntimeException(e);
+        }
     }
 }
-
-/* TODO Добавить гостевой вход с просмотрами
-
-Structure:
-controls
-init
-fills
-query
-button
-            rsMetaData = dbMetaData.getTables(null, null, null, new String[]{"VIEW"});
-            while (rsMetaData.next()) {
-                tablesList.add(rsMetaData.getString("TABLE_NAME"));
-            }
- */

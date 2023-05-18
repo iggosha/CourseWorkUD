@@ -59,7 +59,7 @@
       <TextField fx:id="whereTextField" layoutX="144.0" layoutY="169.0" promptText="Условие для выборки..." stylesheets="@../../../css_files/text_field.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="216.0" />
       <CheckBox fx:id="ascCheckBox" layoutX="144.0" layoutY="335.0" mnemonicParsing="false" onAction="#makeTableView" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="366.0" />
       <Button fx:id="infoButton" layoutX="998.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="9.0" />
-      <Button fx:id="createRepostButton" layoutX="227.0" layoutY="555.0" mnemonicParsing="false" onAction="#createReport" prefHeight="36.0" prefWidth="38.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="540.0">
+      <Button fx:id="createReportButton1" layoutX="163.0" layoutY="540.0" mnemonicParsing="false" onAction="#createReport" prefHeight="36.0" prefWidth="38.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.leftAnchor="163.0" AnchorPane.topAnchor="540.0">
          <graphic>
             <ImageView fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,5 +69,16 @@
          </graphic>
       </Button>
       <Label layoutX="144.0" layoutY="501.0" stylesheets="@../../../css_files/text.css" text="Создать отчёт" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="480.0" />
+      <Button fx:id="createReportButton2" layoutX="283.0" layoutY="540.0" mnemonicParsing="false" onAction="#createDocReport" prefHeight="36.0" prefWidth="38.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css">
+         <graphic>
+            <ImageView fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/icons8-report-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="144.0" layoutY="596.0" stylesheets="@../../../css_files/text.css" text=".HTML" />
+      <Label layoutX="266.0" layoutY="596.0" stylesheets="@../../../css_files/text.css" text=".DOCX" />
     </children>
 </AnchorPane>
