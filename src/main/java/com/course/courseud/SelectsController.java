@@ -24,6 +24,8 @@ import org.apache.poi.xwpf.usermodel.XWPFStyles;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTFonts;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 public class SelectsController {
     @FXML
@@ -202,39 +204,52 @@ public class SelectsController {
 
     @FXML
     public void createDocReport() {
-        // Creating a blank Document
-
         XWPFDocument document = new XWPFDocument();
-        XWPFTable table = document.createTable();
+        XWPFParagraph paragraph = document.createParagraph();
+        XWPFRun run = paragraph.createRun();
+        run.setText("Отчёт по данным таблицы " + tablesComboBox.getValue());
+
+        paragraph = document.createParagraph();
+        run = paragraph.createRun();
+        run.setText("Дата создания: " + LocalDate.now());
+
+        paragraph = document.createParagraph();
+        run = paragraph.createRun();
+        run.setText("Время создания: " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS));
         XWPFStyles styles = document.createStyles();
         CTFonts fonts = CTFonts.Factory.newInstance();
-        fonts.setHAnsi("Sitka Small");
+        fonts.setHAnsi("Segoe UI");
+        fonts.setAscii("Segoe UI");
         styles.setDefaultFonts(fonts);
         File file = new File("Отчёт.docx");
 
-        // Writing the Document in file system
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            // Creating a table
             String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             ResultSetMetaData metaData = resultSet.getMetaData();
 
+            XWPFTable table = document.createTable();
             XWPFTableRow headerRow = table.getRow(0);
             headerRow.getCell(0).setText(metaData.getColumnName(1));
             for (int i = 2; i <= metaData.getColumnCount(); i++) {
                 headerRow.addNewTableCell().setText(metaData.getColumnName(i));
             }
 
+            int rowCounter = 0;
             while (resultSet.next()) {
                 XWPFTableRow dataRow = table.createRow();
-                for (int i = 1; i <= metaData.getColumnCount(); i++) { // обход столбцов по индексу
+                rowCounter++;
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
                     String value = resultSet.getString(i);
                     dataRow.getCell(i - 1).setText(value);
                 }
             }
 
+            paragraph = document.createParagraph();
+            run = paragraph.createRun();
+            run.setText("Итого записей: " + rowCounter);
             document.write(fileOutputStream);
             Desktop.getDesktop().browse(file.toURI());
         } catch (IOException e) {
