@@ -10,6 +10,8 @@ public class InsertsController {
     @FXML
     private Button clearButton;
     @FXML
+    private Button customQueryButton;
+    @FXML
     private Button infoButton;
     @FXML
     private ComboBox<String> tablesComboBox;
@@ -24,7 +26,8 @@ public class InsertsController {
     public void initialize() {
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(insertsTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
-        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("toomuch words"));
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("Инструкция"));
+        customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
         fillTablesComboBox();
     }
 

@@ -13,6 +13,8 @@ public class DeletesController {
     @FXML
     private Button deleteButton;
     @FXML
+    private Button customQueryButton;
+    @FXML
     private Button infoButton;
     @FXML
     private ComboBox<String> tablesComboBox;
@@ -30,8 +32,9 @@ public class DeletesController {
     @FXML
     public void initialize() {
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(deletesTable));
+        customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
-        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("toomuch words"));
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("Инструкция"));
         tablesComboBox.setOnAction(actionEvent -> {
             orderByComboBox.setOnAction(null);
             orderByComboBox.setValue("");
@@ -68,9 +71,10 @@ public class DeletesController {
         // Добавляем WHERE, если есть
         if (!whereTextField.getText().isEmpty()) {
             String whereCondition = whereTextField.getText().trim();
-            whereCondition = whereCondition.replace(",", " AND ");
-            whereCondition = whereCondition.replace(" и ", " AND ");
-            whereCondition = whereCondition.replace(" или ", " OR ");
+            whereCondition = whereCondition.replaceAll("\\d{4}-\\d{2}-\\d{2}","'"+whereCondition+"'");
+            whereCondition = whereCondition.replaceAll(",", " AND ");
+            whereCondition = whereCondition.replaceAll(" и ", " AND ");
+            whereCondition = whereCondition.replaceAll(" или ", " OR ");
             sqlQuery += " WHERE " + whereCondition;
         }
         // Добавляем ORDER BY, если есть

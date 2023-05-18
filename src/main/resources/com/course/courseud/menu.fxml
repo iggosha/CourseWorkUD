@@ -35,18 +35,18 @@
             </effect>
         </Rectangle>
         <Label alignment="CENTER" layoutX="497.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Меню" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="497.0" />
-        <Label alignment="CENTER" layoutX="373.0" layoutY="123.0" stylesheets="@../../../css_files/text.css" text="Добавление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="123.0">
+        <Label alignment="CENTER" layoutX="439.0" layoutY="123.0" stylesheets="@../../../css_files/text.css" text="Добавление" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="123.0">
             <font>
                 <Font name="Candara" size="42.0" />
             </font>
         </Label>
-        <Label layoutX="396.0" layoutY="231.0" stylesheets="@../../../css_files/text.css" text="Просмотр данных" textFill="WHITE" AnchorPane.leftAnchor="396.0" AnchorPane.topAnchor="231.0" />
-        <Label alignment="CENTER" layoutX="385.0" layoutY="339.0" stylesheets="@../../../css_files/text.css" text="Изменение данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="339.0">
+        <Label layoutX="384.0" layoutY="232.0" stylesheets="@../../../css_files/text.css" text="Просмотр и отчёты" textFill="WHITE" AnchorPane.leftAnchor="384.0" AnchorPane.topAnchor="232.0" />
+        <Label alignment="CENTER" layoutX="451.0" layoutY="340.0" stylesheets="@../../../css_files/text.css" text="Изменение" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="451.0" AnchorPane.topAnchor="340.0">
             <font>
                 <Font name="Candara" size="42.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="397.0" layoutY="447.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="397.0" AnchorPane.topAnchor="447.0">
+        <Label alignment="CENTER" layoutX="458.0" layoutY="447.0" stylesheets="@../../../css_files/text.css" text="Удаление " textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="458.0" AnchorPane.topAnchor="447.0">
             <font>
                 <Font name="Segoe UI" size="42.0" />
             </font>
@@ -75,13 +75,6 @@
                 <Image url="@../../../icons/icons8-add-properties-100.png" />
             </image>
         </ImageView>
-      <Rectangle fill="#ffffff00" height="72.0" layoutX="197.0" layoutY="542.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="692.0" />
-      <Label alignment="CENTER" layoutX="356.0" layoutY="557.0" stylesheets="@../../../css_files/text.css" text="Формирование отчёта" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI" size="42.0" />
-         </font>
-      </Label>
-      <Button fx:id="goToReportsButton" layoutX="787.0" layoutY="552.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" style="-fx-cursor: hand;" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" />
       <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="216.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../icons/icons8-report-100.png" />

@@ -51,5 +51,14 @@
       <TextField fx:id="whereTextField" layoutX="144.0" layoutY="213.0" promptText="Условие для выборки..." stylesheets="@../../../css_files/text_field.css" />
       <CheckBox fx:id="ascCheckBox" layoutX="144.0" layoutY="379.0" mnemonicParsing="false" onAction="#makeTableView" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" />
       <Button fx:id="infoButton" layoutX="998.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" />
+      <Button fx:id="customQueryButton" layoutX="1008.0" layoutY="664.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" textFill="#596680">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
+               <image>
+                  <Image url="@../../../icons/icons8-development-skill-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

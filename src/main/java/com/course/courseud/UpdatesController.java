@@ -81,9 +81,10 @@ public class UpdatesController {
         // Добавляем WHERE, если есть
         if (!whereTextField.getText().isEmpty()) {
             String whereCondition = whereTextField.getText().trim();
-            whereCondition = whereCondition.replace(",", " AND ");
-            whereCondition = whereCondition.replace(" и ", " AND ");
-            whereCondition = whereCondition.replace(" или ", " OR ");
+            whereCondition = whereCondition.replaceAll("\\d{4}-\\d{2}-\\d{2}","'"+whereCondition+"'");
+            whereCondition = whereCondition.replaceAll(",", " AND ");
+            whereCondition = whereCondition.replaceAll(" и ", " AND ");
+            whereCondition = whereCondition.replaceAll(" или ", " OR ");
             sqlQuery += " WHERE " + whereCondition;
         }
         // Добавляем ORDER BY, если есть
