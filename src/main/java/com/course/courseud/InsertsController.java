@@ -24,9 +24,26 @@ public class InsertsController {
 
     @FXML
     public void initialize() {
+        String instr = """
+                1) Кнопка "<" - возвращает в главное меню.
+                2) Кнопка с изображением метлы - очищает таблицу.
+                3) Кнопка "i" (эта кнопка) - выводит окно справки.
+                4) Кнопка с изображением головы и шестерни - открывает окно для написания
+                непосредественно SQL-запросов в приложении разработчиком.
+                
+                5) Поле с выпадающим списком и подсказкой "Выбрать из доступных таблиц..." -
+                открывает для выбора список всех таблиц базы данных.
+                6) Поле ввода новых значений - вставляет введённые через запятую значения в выбранную таблицу.
+                Для добавления значений нажать на клавиатуре кнопку Enter после ввода.
+                
+                Стандартный алгоритм:
+                1. Выбрать таблицу в поле с выпадающим списком
+                2. Ввести нужные значения в нужном количестве через запятую
+                2.1. Нажать Enter, не выходя из поля ввода
+                """;
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instr));
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(insertsTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
-        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("Инструкция"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
         fillTablesComboBox();
     }

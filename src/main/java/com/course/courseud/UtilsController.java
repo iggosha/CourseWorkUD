@@ -15,6 +15,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.course.courseud.UDApp.connection;
@@ -142,6 +144,42 @@ public class UtilsController {
             throw new RuntimeException(e);
         }
         return columnsAndTypes;
+    }
+
+    public String appendWhereAndOrderByToQuery (TextField whereTextField, ComboBox orderByComboBox, CheckBox ascCheckBox, String sqlQuery) {
+        // Добавляем WHERE, если есть
+        if (!whereTextField.getText().isEmpty()) {
+            String whereCondition = whereTextField.getText().trim();
+            // Упрощение синтаксиса при вводе
+            whereCondition = whereCondition.replaceAll(",", " AND ");
+            whereCondition = whereCondition.replaceAll(" и ", " AND ");
+            whereCondition = whereCondition.replaceAll(" или ", " OR ");
+
+            // Поиск даты
+            Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+            Matcher matcher = pattern.matcher(whereCondition);
+            while (matcher.find()) {
+                String date = matcher.group();
+                whereCondition = whereCondition.replace(date, "'" + date + "'");
+            }
+
+            // Поиск строковых значений столбцов
+            pattern = Pattern.compile("(?<==\\s)[\\p{L}\\p{Zs}]+(?=\\s(OR|AND|$)|$)",
+                    Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+            matcher = pattern.matcher(whereCondition);
+            whereCondition = matcher.replaceAll("'$0'");
+            sqlQuery += " WHERE " + whereCondition;
+        }
+        // Добавляем ORDER BY, если есть
+        if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
+            sqlQuery += " ORDER BY " + orderByComboBox.getValue();
+            if (!ascCheckBox.isSelected()) {
+                sqlQuery += " DESC ";
+            } else {
+                sqlQuery += " ASC ";
+            }
+        }
+        return sqlQuery;
     }
 
 }

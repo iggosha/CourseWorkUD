@@ -33,10 +33,45 @@ public class UpdatesController {
 
     @FXML
     public void initialize() {
+        String instr = """
+                1) Кнопка "<" - возвращает в главное меню.
+                2) Кнопка с изображением метлы - очищает таблицу.
+                3) Кнопка "i" (эта кнопка) - выводит окно справки.
+                4) Кнопка с изображением головы и шестерни - открывает окно для написания
+                непосредественно SQL-запросов в приложении разработчиком.
+                
+                5) Поле с выпадающим списком и подсказкой "Выбрать из доступных таблиц..." -
+                открывает для выбора список всех таблиц базы данных.
+                6) Поле ввода условий и подсказкой "Условие для выборки..." -
+                позволяет записывать условия для выборки из выбранной таблицы.
+                Значения нужно записывать в форматах:
+                а) "столбец = значение" для поиска нужного,
+                б) "столбец >/< значение" для фильтрации/
+                Условия разделять словами "AND","OR", "и", "или", либо заятой (что равно "и").
+                7) Поле с выпадающим списком и подсказкой "Сортировать по колонке..." -
+                открывает для выбора список всех столбцов выбранной таблицы.
+                8) Флажок "По возрастанию" сортирует таблицу по выбранному столбцу по возрастанию,
+                либо по убыванию, если флажок снят.
+                
+                9) Кнопка с подписью "Скопировать" копирует значения выбранной строки в поле ввода.
+                10) Поле ввода с подсказкой "Введите изменения выбранного поля"
+                перезаписывает значения в выбранную в таблице строку после нажатия Enter.
+                
+                Стандартный алгоритм:
+                1. Выбрать таблицу в поле с выпадающим списком
+                2. Ввести условие для выборки (Опционально)
+                2.1. Нажать Enter, не выходя из поля ввода
+                3. Выбрать столбец для сортировки в слующем поле с выпадающим списком (Опционально)
+                4. Оставить или снять флажок "По возрастанию" (Опционально)
+                5. Выбрать строку для перезаписи
+                6. Нажать кнопку "Скопировать"
+                7. Изменить значения в поле ввода
+                7.1. Нажать Enter, не выходя из поля ввода
+                """;
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instr));
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(updatesTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
-        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("toomuch words"));
         tablesComboBox.setOnAction(actionEvent -> {
             orderByComboBox.setOnAction(null);
             orderByComboBox.setValue("");
@@ -78,24 +113,7 @@ public class UpdatesController {
     private void makeTableView() {
         updatesTable.getColumns().clear();
         String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
-        // Добавляем WHERE, если есть
-        if (!whereTextField.getText().isEmpty()) {
-            String whereCondition = whereTextField.getText().trim();
-            whereCondition = whereCondition.replaceAll("\\d{4}-\\d{2}-\\d{2}","'"+whereCondition+"'");
-            whereCondition = whereCondition.replaceAll(",", " AND ");
-            whereCondition = whereCondition.replaceAll(" и ", " AND ");
-            whereCondition = whereCondition.replaceAll(" или ", " OR ");
-            sqlQuery += " WHERE " + whereCondition;
-        }
-        // Добавляем ORDER BY, если есть
-        if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
-            sqlQuery += " ORDER BY " + orderByComboBox.getValue();
-            if (!ascCheckBox.isSelected()) {
-                sqlQuery += " DESC ";
-            } else {
-                sqlQuery += " ASC ";
-            }
-        }
+        sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
         utilsController.fillTableWithSqlQuery(updatesTable, sqlQuery);
     }
 

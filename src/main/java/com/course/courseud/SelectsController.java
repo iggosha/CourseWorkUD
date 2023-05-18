@@ -19,8 +19,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SelectsController {
     @FXML
@@ -46,10 +44,42 @@ public class SelectsController {
 
     @FXML
     public void initialize() {
+        String instr = """
+                1) Кнопка "<" - возвращает в главное меню.
+                2) Кнопка с изображением метлы - очищает таблицу.
+                3) Кнопка "i" (эта кнопка) - выводит окно справки.
+                4) Кнопка с изображением головы и шестерни - открывает окно для написания
+                непосредественно SQL-запросов в приложении разработчиком.
+                
+                5) Поле с выпадающим списком и подсказкой "Выбрать из доступных таблиц..." -
+                открывает для выбора список всех таблиц базы данных.
+                6) Поле ввода условий и подсказкой "Условие для выборки..." -
+                позволяет записывать условия для выборки из выбранной таблицы.
+                Значения нужно записывать в форматах:
+                а) "столбец = значение" для поиска нужного,
+                б) "столбец >/< значение" для фильтрации/
+                Условия разделять словами "AND","OR", "и", "или", либо заятой (что равно "и").
+                7) Поле с выпадающим списком и подсказкой "Сортировать по колонке..." -
+                открывает для выбора список всех столбцов выбранной таблицы.
+                8) Флажок "По возрастанию" сортирует таблицу по выбранному столбцу по возрастанию,
+                либо по убыванию, если флажок снят.
+                
+                9) Кнопка с подписью "Создать отчёт" формирует отчёт по выбранным данным
+                в формате html-файла и открывает его в браузере по умолчанию.
+                
+                
+                Стандартный алгоритм:
+                1. Выбрать таблицу в поле с выпадающим списком
+                2. Ввести условие для выборки (Опционально)
+                2.1. Нажать Enter, не выходя из поля ввода
+                3. Выбрать столбец для сортировки в слующем поле с выпадающим списком (Опционально)
+                4. Оставить или снять флажок "По возрастанию" (Опционально)
+                5. Создать отчёт (Опционально)
+                """;
+        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instr));
         clearButton.setOnAction(actionEvent -> utilsController.clearTable(selectsTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
-        infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow("Инструкция"));
         tablesComboBox.setOnAction(actionEvent -> {
             orderByComboBox.setOnAction(null);
             orderByComboBox.setValue("");
@@ -83,40 +113,7 @@ public class SelectsController {
     private void makeTableView() {
         selectsTable.getColumns().clear();
         String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
-        // Добавляем WHERE, если есть
-
-        if (!whereTextField.getText().isEmpty()) {
-            String whereCondition = whereTextField.getText().trim();
-            // Упрощение синтаксиса при вводе
-            whereCondition = whereCondition.replaceAll(",", " AND ");
-            whereCondition = whereCondition.replaceAll(" и ", " AND ");
-            whereCondition = whereCondition.replaceAll(" или ", " OR ");
-
-            // Поиск даты
-            Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-            Matcher matcher = pattern.matcher(whereCondition);
-            while(matcher.find()) {
-                String date = matcher.group();
-                whereCondition = whereCondition.replace(date, "'" + date + "'");
-            }
-
-            // Поиск строковых значений столбцов
-            pattern = Pattern.compile("(=\\s*)(\\p{L}+)(\\s*|AND|OR|$)",
-                    Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-            matcher = pattern.matcher(whereCondition);
-            whereCondition = matcher.replaceAll("$1'$2'$3");
-
-            sqlQuery += " WHERE " + whereCondition;
-        }
-        // Добавляем ORDER BY, если есть
-        if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
-            sqlQuery += " ORDER BY " + orderByComboBox.getValue();
-            if (!ascCheckBox.isSelected()) {
-                sqlQuery += " DESC ";
-            } else {
-                sqlQuery += " ASC ";
-            }
-        }
+        sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
         utilsController.fillTableWithSqlQuery(selectsTable, sqlQuery);
     }
 
@@ -160,40 +157,7 @@ public class SelectsController {
                     + "<br>Дата создания: " + LocalDate.now()
                     + "<br>Время создания: " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS) + " </td></tr>");
             String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
-            // Добавляем WHERE, если есть
-
-            if (!whereTextField.getText().isEmpty()) {
-                String whereCondition = whereTextField.getText().trim();
-                // Упрощение синтаксиса при вводе
-                whereCondition = whereCondition.replaceAll(",", " AND ");
-                whereCondition = whereCondition.replaceAll(" и ", " AND ");
-                whereCondition = whereCondition.replaceAll(" или ", " OR ");
-
-                // Поиск даты
-                Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-                Matcher matcher = pattern.matcher(whereCondition);
-                while(matcher.find()) {
-                    String date = matcher.group();
-                    whereCondition = whereCondition.replace(date, "'" + date + "'");
-                }
-
-                // Поиск строковых значений столбцов
-                pattern = Pattern.compile("(=\\s*)(\\p{L}+)(\\s*|AND|OR|$)",
-                        Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-                matcher = pattern.matcher(whereCondition);
-                whereCondition = matcher.replaceAll("$1'$2'$3");
-
-                sqlQuery += " WHERE " + whereCondition;
-            }
-            // Добавляем ORDER BY, если есть
-            if (orderByComboBox.getValue() != null && !orderByComboBox.getValue().equals("")) {
-                sqlQuery += " ORDER BY " + orderByComboBox.getValue();
-                if (!ascCheckBox.isSelected()) {
-                    sqlQuery += " DESC ";
-                } else {
-                    sqlQuery += " ASC ";
-                }
-            }
+            sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int rowCount = 0;
