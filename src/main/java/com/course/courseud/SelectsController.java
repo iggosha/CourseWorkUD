@@ -18,9 +18,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.io.File;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFStyles;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTFonts;
 
 public class SelectsController {
     @FXML
@@ -200,8 +203,13 @@ public class SelectsController {
     @FXML
     public void createDocReport() {
         // Creating a blank Document
+
         XWPFDocument document = new XWPFDocument();
         XWPFTable table = document.createTable();
+        XWPFStyles styles = document.createStyles();
+        CTFonts fonts = CTFonts.Factory.newInstance();
+        fonts.setHAnsi("Sitka Small");
+        styles.setDefaultFonts(fonts);
         File file = new File("Отчёт.docx");
 
         // Writing the Document in file system
