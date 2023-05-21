@@ -33,25 +33,25 @@
             </effect>
         </Rectangle>
         <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Добавление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
-        <TableView fx:id="insertsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="400.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="clearButton" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="9.0">
-            <graphic>
-                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
-                    <image>
-                        <Image url="@../../../icons/icons8-broom-100_blue.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+        <TableView fx:id="insertsTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="439.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" onAction="#makeTableView" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <Button fx:id="goToMenuButton" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="9.0" />
-      <TextField fx:id="insertsTextField" layoutX="144.0" layoutY="571.0" onAction="#insertRow" prefWidth="472.0" promptText="Введите значения для вставки в выбранную таблицу" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="540.0" />
+      <TextField fx:id="insertsTextField" layoutX="108.0" layoutY="508.0" onAction="#insertRow" prefWidth="472.0" promptText="Введите через запятую значения для добавления" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="580.0" />
       <Button fx:id="infoButton" layoutX="998.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="9.0" />
       <Button fx:id="customQueryButton" layoutX="1008.0" layoutY="664.0" mnemonicParsing="false" prefHeight="151.0" prefWidth="199.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" textFill="#596680" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="18.0">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                <image>
                   <Image url="@../../../icons/icons8-development-skill-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="refreshButton" alignment="CENTER" ellipsisString="" layoutX="902.0" layoutY="10.0" mnemonicParsing="false" onAction="#makeTableView" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="9.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/icons8-refresh-100.png" />
                </image>
             </ImageView>
          </graphic>

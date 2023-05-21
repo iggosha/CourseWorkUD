@@ -9,7 +9,7 @@ public class DeletesController {
     @FXML
     private Button goToMenuButton;
     @FXML
-    private Button clearButton;
+    private Button refreshButton;
     @FXML
     private Button deleteButton;
     @FXML
@@ -33,7 +33,7 @@ public class DeletesController {
     public void initialize() {
         String instr = """
                 1) Кнопка "<" - возвращает в главное меню.
-                2) Кнопка с изображением метлы - очищает таблицу.
+                2) Кнопка с изображением закрученных стрелок - обновляет и показывает выбранную таблицу.
                 3) Кнопка "i" (эта кнопка) - выводит окно справки.
                 4) Кнопка с изображением головы и шестерни - открывает окно для написания
                 непосредественно SQL-запросов в приложении разработчиком.
@@ -64,7 +64,6 @@ public class DeletesController {
                 6. Нажать кнопку "Удалить"
                 """;
         infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instr));
-        clearButton.setOnAction(actionEvent -> utilsController.clearTable(deletesTable));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         tablesComboBox.setOnAction(actionEvent -> {

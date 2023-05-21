@@ -3,13 +3,14 @@ package com.course.courseud;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class CustomController {
 
     @FXML
-    private Button clearButton;
+    private Button refreshButton;
     @FXML
     private Button infoButton;
     @FXML
@@ -18,6 +19,8 @@ public class CustomController {
     private TextField customQueryTextField;
     @FXML
     private Button goToSelectsButton;
+    @FXML
+    private ComboBox<String> tablesComboBox;
 
     UtilsController utilsController = new UtilsController();
 
@@ -27,9 +30,17 @@ public class CustomController {
                 Эта панель предназначена для ручного ввода SQL-запросов в поле для ввода.
                 Запрос вводится полностью, для выполнения запроса нужно нажать Enter после ввода его в поле.
                 """;
-        clearButton.setOnAction(actionEvent -> utilsController.clearTable(customQueryTable));
+        tablesComboBox.getItems().addAll(utilsController.getTablesNames());
+        tablesComboBox.getItems().addAll(utilsController.getViewsNames());
         goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "table_selects.fxml"));
         infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instruction));
+    }
+
+    @FXML
+    private void makeTableView() {
+        customQueryTable.getColumns().clear();
+        String sqlQuery = "SELECT * FROM " + tablesComboBox.getValue();
+        utilsController.fillTableWithSqlQuery(customQueryTable, sqlQuery);
     }
 
     @FXML

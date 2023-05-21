@@ -35,18 +35,9 @@
         </Rectangle>
         <Label alignment="CENTER" layoutX="437.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Удаление данных" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="437.0" />
         <TableView fx:id="deletesTable" editable="true" layoutX="437.0" layoutY="108.0" prefHeight="499.0" prefWidth="499.0" style="-fx-background-radius: 12;" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="108.0" />
-        <Button fx:id="clearButton" layoutX="902.0" layoutY="11.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.topAnchor="9.0">
-            <graphic>
-                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
-                    <image>
-                        <Image url="@../../../icons/icons8-broom-100_blue.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
         <ComboBox fx:id="tablesComboBox" layoutX="108.0" layoutY="141.0" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="108.0" />
         <Button fx:id="goToMenuButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="9.0" />
-      <Button fx:id="deleteButton" layoutX="144.0" layoutY="461.0" mnemonicParsing="false" onAction="#deleteRow" styleClass="button-text" stylesheets="@../../../css_files/button.css" text="Удалить" AnchorPane.topAnchor="432.0" />
+      <Button fx:id="deleteButton" layoutX="181.0" layoutY="432.0" mnemonicParsing="false" onAction="#deleteRow" styleClass="button-text" stylesheets="@../../../css_files/button.css" text="Удалить" AnchorPane.topAnchor="432.0" />
       <ComboBox fx:id="orderByComboBox" layoutX="144.0" layoutY="325.0" onAction="#makeTableView" prefHeight="36.0" prefWidth="258.0" promptText="Сортировать по колонке..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.topAnchor="324.0" />
       <TextField fx:id="whereTextField" layoutX="144.0" layoutY="213.0" promptText="Условие для выборки..." stylesheets="@../../../css_files/text_field.css" AnchorPane.topAnchor="216.0" />
       <CheckBox fx:id="ascCheckBox" layoutX="144.0" layoutY="379.0" mnemonicParsing="false" onAction="#makeTableView" selected="true" stylesheets="@../../../css_files/check_box.css" text="По возрастанию" AnchorPane.topAnchor="366.0" />
@@ -56,6 +47,15 @@
             <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-y: 2;">
                <image>
                   <Image url="@../../../icons/icons8-development-skill-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="refreshButton" alignment="CENTER" ellipsisString="" layoutX="912.0" layoutY="20.0" mnemonicParsing="false" onAction="#makeTableView" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="9.0">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/icons8-refresh-100.png" />
                </image>
             </ImageView>
          </graphic>

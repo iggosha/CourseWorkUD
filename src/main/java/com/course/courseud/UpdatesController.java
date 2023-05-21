@@ -9,7 +9,7 @@ public class UpdatesController {
     @FXML
     private Button goToMenuButton;
     @FXML
-    private Button clearButton;
+    private Button refreshButton;
     @FXML
     private Button customQueryButton;
     @FXML
@@ -35,7 +35,7 @@ public class UpdatesController {
     public void initialize() {
         String instr = """
                 1) Кнопка "<" - возвращает в главное меню.
-                2) Кнопка с изображением метлы - очищает таблицу.
+                2) Кнопка с изображением закрученных стрелок - обновляет и показывает выбранную таблицу.
                 3) Кнопка "i" (эта кнопка) - выводит окно справки.
                 4) Кнопка с изображением головы и шестерни - открывает окно для написания
                 непосредественно SQL-запросов в приложении разработчиком.
@@ -69,7 +69,6 @@ public class UpdatesController {
                 7.1. Нажать Enter, не выходя из поля ввода
                 """;
         infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instr));
-        clearButton.setOnAction(actionEvent -> utilsController.clearTable(updatesTable));
         goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToMenuButton, "menu.fxml"));
         customQueryButton.setOnAction(actionEvent -> utilsController.openNewWindow(customQueryButton, "custom_query.fxml"));
         tablesComboBox.setOnAction(actionEvent -> {

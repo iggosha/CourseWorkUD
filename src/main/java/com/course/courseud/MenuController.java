@@ -32,7 +32,7 @@ public class MenuController {
         goToUpdatesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToUpdatesButton, "table_updates.fxml"));
         goToDeletesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToDeletesButton, "table_deletes.fxml"));
         goToGuestMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToGuestMenuButton, "guest_menu.fxml"));
-        //authUser();// включить, connectUser ниже убрать
+        //authUser(); закомментировать коннектЮзер
         connectUser();
     }
 
