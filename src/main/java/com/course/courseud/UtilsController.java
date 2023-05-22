@@ -22,9 +22,6 @@ import java.util.stream.Collectors;
 import static com.course.courseud.UDApp.connection;
 
 public class UtilsController {
-    public void clearTable(TableView tableView) {
-        tableView.getColumns().clear();
-    }
 
     public void showSqlExceptionWindow(SQLException e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -48,8 +45,6 @@ public class UtilsController {
         alert.setHeaderText(null);
         VBox dialogPaneContent = new VBox();
         Label label = new Label(instruction);
-//        TextArea textArea = new TextArea();
-//        textArea.setText(instruction);
         dialogPaneContent.getChildren().addAll(label);
         alert.getDialogPane().setContent(dialogPaneContent);
         alert.showAndWait();

@@ -7,10 +7,13 @@ public class GuestMenuController {
 
     @FXML
     private Button goToSelectsButton;
+    @FXML
+    private Button goToMenuButton;
     UtilsController utilsController = new UtilsController();
 
     @FXML
     public void initialize() {
         goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "guest_table_selects.fxml"));
+        goToMenuButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "menu.fxml"));
     }
 }

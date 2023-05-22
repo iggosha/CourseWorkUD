@@ -30,12 +30,12 @@ public class InsertsController {
                 3) Кнопка "i" (эта кнопка) - выводит окно справки.
                 4) Кнопка с изображением головы и шестерни - открывает окно для написания
                 непосредественно SQL-запросов в приложении разработчиком.
-                
+                                
                 5) Поле с выпадающим списком и подсказкой "Выбрать из доступных таблиц..." -
                 открывает для выбора список всех таблиц базы данных.
                 6) Поле ввода новых значений - вставляет введённые через запятую значения в выбранную таблицу.
                 Для добавления значений нажать на клавиатуре кнопку Enter после ввода.
-                
+                                
                 Стандартный алгоритм:
                 1. Выбрать таблицу в поле с выпадающим списком
                 2. Ввести нужные значения в нужном количестве через запятую
@@ -61,24 +61,29 @@ public class InsertsController {
     @FXML
     private void insertRow() {
         StringBuilder sqlQuery = new StringBuilder("INSERT INTO " + tablesComboBox.getValue() + "(");
+        boolean useSerial = true;
+        String insertFieldString = insertsTextField.getText().trim();
         for (TableColumn<ObservableList<String>, ?> tc : insertsTable.getColumns()) {
+            // Если не вносим первое значение, а используем SERIAL в SQL
+            if (insertFieldString.startsWith(",") && useSerial) {
+                insertFieldString = insertFieldString.replace(',',' ');
+                useSerial = false;
+                continue;
+            }
             sqlQuery.append(tc.getText())
                     .append(", ");
         }
-        sqlQuery.deleteCharAt(sqlQuery.length() - 2)
+        sqlQuery.deleteCharAt(sqlQuery.length() - 1)
+                .deleteCharAt(sqlQuery.length() - 1)
                 .append(") VALUES (");
-        String[] values = insertsTextField.getText().split(",");
-        StringBuilder stringBuilderValues = new StringBuilder();
+        String[] values = insertFieldString.split(",");
         for (String value : values) {
-            value = value.trim();
-            if (!value.matches("\\d+")) {
-                value = "'" + value + "'";
-            }
-            stringBuilderValues.append(value)
+            value = "'" + value.trim() + "'";
+            sqlQuery.append(value)
                     .append(", ");
         }
-        stringBuilderValues.deleteCharAt(stringBuilderValues.length() - 2);
-        sqlQuery.append(stringBuilderValues)
+        sqlQuery.deleteCharAt(sqlQuery.length() - 1)
+                .deleteCharAt(sqlQuery.length() - 1)
                 .append(");");
         utilsController.updateTableWithSqlQuery(String.valueOf(sqlQuery));
         makeTableView();

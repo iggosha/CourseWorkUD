@@ -4,6 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+
+import java.util.Optional;
 
 public class DeletesController {
     @FXML
@@ -37,7 +40,7 @@ public class DeletesController {
                 3) Кнопка "i" (эта кнопка) - выводит окно справки.
                 4) Кнопка с изображением головы и шестерни - открывает окно для написания
                 непосредественно SQL-запросов в приложении разработчиком.
-                
+                                
                 5) Поле с выпадающим списком и подсказкой "Выбрать из доступных таблиц..." -
                 открывает для выбора список всех таблиц базы данных.
                 6) Поле ввода условий и подсказкой "Условие для выборки..." -
@@ -50,10 +53,10 @@ public class DeletesController {
                 открывает для выбора список всех столбцов выбранной таблицы.
                 8) Флажок "По возрастанию" сортирует таблицу по выбранному столбцу по возрастанию,
                 либо по убыванию, если флажок снят.
-                
+                                
                 9) Кнопка с подписью "Удалить" удаляет из таблицы выбранную строку
-                
-                
+                                
+                                
                 Стандартный алгоритм:
                 1. Выбрать таблицу в поле с выпадающим списком
                 2. Ввести условие для выборки (Опционально)
@@ -105,9 +108,25 @@ public class DeletesController {
 
     @FXML
     private void deleteRow() {
-        String sqlQuery = "DELETE FROM " + tablesComboBox.getValue() + " WHERE " +
-                deletesTable.getColumns().get(0).getText() + " = " + deletesTable.getSelectionModel().getSelectedItem().get(0);
-        utilsController.updateTableWithSqlQuery(sqlQuery);
-        makeTableView();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Подтверждение");
+        alert.setHeaderText(null);
+        VBox dialogPaneContent = new VBox();
+        Label userLabel = new Label("Вы уверены, что хотите удалить запись "
+                +  deletesTable.getSelectionModel().getSelectedItem() + "?");
+
+        dialogPaneContent.getChildren().addAll(userLabel);
+        alert.getDialogPane().setContent(dialogPaneContent);
+        ButtonType enterYes = new ButtonType("Да");
+        ButtonType enterNo = new ButtonType("Нет");
+        // Remove default ButtonTypes
+        alert.getButtonTypes().setAll(enterYes, enterNo);
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == enterYes) {
+            String sqlQuery = "DELETE FROM " + tablesComboBox.getValue() + " WHERE " +
+                    deletesTable.getColumns().get(0).getText() + " = " + deletesTable.getSelectionModel().getSelectedItem().get(0);
+            utilsController.updateTableWithSqlQuery(sqlQuery);
+            makeTableView();
+        }
     }
 }

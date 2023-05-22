@@ -43,7 +43,7 @@
             <Image url="@../../../icons/icons8-report-100.png" />
          </image>
       </ImageView>
-      <Button layoutY="640.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="0.0">
+      <Button fx:id="goToMenuButton" layoutY="640.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="0.0">
          <graphic>
             <ImageView fitHeight="72.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
