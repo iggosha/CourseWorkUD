@@ -28,15 +28,12 @@ public class UDApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
-    }
-
-    public static void connectUser() {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        launch();
     }
 }
 
