@@ -23,9 +23,9 @@ import static com.course.courseud.UDApp.connection;
 
 public class UtilsController {
 
-    public void showSqlExceptionWindow(SQLException e) {
+    public void showSqlExceptionWindow(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Произошла ошибка");
+        alert.setTitle("Произошла ошибка при работе с БД");
         alert.setHeaderText(null);
         VBox dialogPaneContent = new VBox();
         Label label = new Label(e.getMessage());
@@ -73,8 +73,7 @@ public class UtilsController {
             while (rsMetaData.next()) {
                 tablesList.add(rsMetaData.getString("TABLE_NAME"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             showSqlExceptionWindow(e);
         }
         return tablesList;
@@ -88,8 +87,7 @@ public class UtilsController {
             while (rsMetaData.next()) {
                 tablesList.add(rsMetaData.getString("TABLE_NAME"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             showSqlExceptionWindow(e);
         }
         return tablesList;
@@ -124,8 +122,7 @@ public class UtilsController {
             }
             //устанавливаем данные таблицы
             tableView.setItems(allRows);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             showSqlExceptionWindow(e);
         }
     }
@@ -135,8 +132,7 @@ public class UtilsController {
             // Делаем запрос и получаем метаданные
             Statement statement = connection.createStatement();
             statement.executeUpdate(sqlQuery);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             showSqlExceptionWindow(e);
         }
     }
@@ -150,8 +146,8 @@ public class UtilsController {
             for (int i = 0; i < metaData.getColumnCount(); i++) {
                 columnsAndTypes.put(metaData.getColumnName(i + 1), metaData.getColumnTypeName(i + 1));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            showSqlExceptionWindow(e);
         }
         return columnsAndTypes;
     }

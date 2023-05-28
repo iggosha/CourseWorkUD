@@ -193,10 +193,8 @@ public class SelectsController {
                     </html>
                     """);
             Desktop.getDesktop().browse(file.toURI());
-        } catch (SQLException e) {
+        } catch (Exception e) {
             utilsController.showSqlExceptionWindow(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -251,11 +249,8 @@ public class SelectsController {
             run.setText("Итого записей: " + rowCounter);
             document.write(fileOutputStream);
             Desktop.getDesktop().browse(file.toURI());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             utilsController.showSqlExceptionWindow(e);
-            throw new RuntimeException(e);
         }
     }
 }
