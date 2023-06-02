@@ -152,8 +152,9 @@ public class PlantsController {
         File file = new File("Отчёт.docx");
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM plants_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
+            System.out.println(sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             ResultSetMetaData metaData = resultSet.getMetaData();
@@ -224,7 +225,7 @@ public class PlantsController {
                     + nameLabel.getText()
                     + "<br>Дата создания: " + LocalDate.now()
                     + "<br>Время создания: " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS) + " </td></tr>");
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM plants_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);

@@ -152,7 +152,7 @@ public class DisruptionsController {
         File file = new File("Отчёт.docx");
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM disruptions_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
@@ -224,7 +224,7 @@ public class DisruptionsController {
                     + nameLabel.getText()
                     + "<br>Дата создания: " + LocalDate.now()
                     + "<br>Время создания: " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS) + " </td></tr>");
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM disruptions_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);

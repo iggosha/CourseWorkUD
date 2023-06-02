@@ -152,7 +152,7 @@ public class CareController {
         File file = new File("Отчёт.docx");
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM care_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
@@ -224,8 +224,9 @@ public class CareController {
                     + nameLabel.getText()
                     + "<br>Дата создания: " + LocalDate.now()
                     + "<br>Время создания: " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS) + " </td></tr>");
-            String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+            String sqlQuery = "SELECT * FROM care_usable";
             sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
+            System.out.println(sqlQuery);
             Statement statement = UDApp.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             int rowCount = 0;
@@ -242,7 +243,11 @@ public class CareController {
                 fw.write("<tr>");
                 for (int i = 1; i <= metaData.getColumnCount(); i++) {
                     fw.write("<td>");
-                    fw.write(resultSet.getString(i));
+                    String str = resultSet.getString(i);
+                    if (str == null) {
+                        str = " ";
+                    }
+                    fw.write(str);
                     fw.write("</td>");
                 }
                 fw.write("</tr>");
