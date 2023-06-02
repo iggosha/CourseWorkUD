@@ -286,7 +286,7 @@ public class PlantsController {
 
     @FXML
     private void updateRow() {
-        String sqlQuery = "UPDATE " + nameLabel.getText() + " SET ";
+        String sqlQuery = "CALL update_plant( ";
         String[] oldValues = plantsTextField.getText().split(",");
         StringBuilder stringBuilderValues = new StringBuilder();
         // Разделяем полученные значения
@@ -295,22 +295,13 @@ public class PlantsController {
             if (!oldValues[i].matches("\\d+")) {
                 oldValues[i] = "'" + oldValues[i] + "'";
             }
-        }
-        for (int i = 0; i < plantsTable.getColumns().size(); i++) {
             stringBuilderValues
-                    .append(plantsTable.getColumns().get(i).getText())
-                    .append(" = ")
                     .append(oldValues[i])
                     .append(", ");
         }
-        // Добавляем WHERE для удаления одного поля
-        stringBuilderValues
-                .deleteCharAt(stringBuilderValues.length() - 2)
-                .append(" WHERE ")
-                .append(plantsTable.getColumns().get(0).getText())
-                .append(" = ")
-                .append(plantsTable.getSelectionModel().getSelectedItem().get(0))
-                .append(";");
+        stringBuilderValues.deleteCharAt(stringBuilderValues.length() - 1)
+                .deleteCharAt(stringBuilderValues.length() - 1)
+                .append(");");
         sqlQuery += stringBuilderValues;
         utilsController.updateTableWithSqlQuery((sqlQuery));
         makeTableView();
@@ -318,24 +309,8 @@ public class PlantsController {
 
     @FXML
     private void insertRow() {
-        StringBuilder sqlQuery = new StringBuilder("INSERT INTO " + nameLabel.getText() + "(");
-        boolean useSerial = true;
-        String insertFieldString = plantsTextField.getText().trim();
-        for (TableColumn<ObservableList<String>, ?> tc : plantsTable.getColumns()) {
-            // Если не вносим первое значение, а используем SERIAL в SQL
-            if (insertFieldString.startsWith(",") && useSerial) {
-                insertFieldString = insertFieldString.substring(1);
-                useSerial = false;
-                continue;
-            }
-            sqlQuery.append(tc.getText())
-                    .append(", ");
-        }
-        sqlQuery.deleteCharAt(sqlQuery.length() - 1)
-                .deleteCharAt(sqlQuery.length() - 1)
-                .append(") VALUES (");
-
-        String[] values = insertFieldString.split(",");
+        StringBuilder sqlQuery = new StringBuilder("CALL add_plant(");
+        String[] values = plantsTextField.getText().split(",");
         StringBuilder stringBuilderValues = new StringBuilder();
         for (String value : values) {
             value = value.trim();
@@ -357,7 +332,7 @@ public class PlantsController {
     @FXML
     private void makeTableView() {
         plantsTable.getColumns().clear();
-        String sqlQuery = "SELECT * FROM " + nameLabel.getText();
+        String sqlQuery = "SELECT * FROM plants_usable";
         sqlQuery = utilsController.appendWhereAndOrderByToQuery(whereTextField, orderByComboBox, ascCheckBox, sqlQuery);
         utilsController.fillTableWithSqlQuery(plantsTable, sqlQuery);
     }
