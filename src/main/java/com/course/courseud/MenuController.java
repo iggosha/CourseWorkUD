@@ -2,32 +2,28 @@ package com.course.courseud;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-
-import java.util.Optional;
-
-import static com.course.courseud.UDApp.*;
 
 public class MenuController {
-
     @FXML
-    private Button goToDeletesButton;
+    private Button goToCareButton;
     @FXML
-    private Button goToInsertsButton;
+    private Button goToDirectoriesButton;
     @FXML
-    private Button goToSelectsButton;
+    private Button goToDisruptionsButton;
     @FXML
-    private Button goToUpdatesButton;
+    private Button goToPlantsButton;
     @FXML
-    private Button goToGuestMenuButton;
+    private Button goToCustomButton;
 
     UtilsController utilsController = new UtilsController();
 
     @FXML
     public void initialize() {
-        goToInsertsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToInsertsButton, "table_inserts.fxml"));
-        goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "table_selects.fxml"));
-        goToUpdatesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToUpdatesButton, "table_updates.fxml"));
-        goToDeletesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToDeletesButton, "table_deletes.fxml"));
+        goToPlantsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToPlantsButton, "plants.fxml"));
+        goToDisruptionsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToDisruptionsButton, "disruptions.fxml"));
+        goToCareButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToCareButton, "care.fxml"));
+        goToDirectoriesButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToDirectoriesButton, "directories.fxml"));
+
+        goToCustomButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToCustomButton, "custom_query.fxml"));
     }
 }

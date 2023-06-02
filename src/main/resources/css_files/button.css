@@ -3,16 +3,16 @@
     -fx-font-weight: bold;
     -fx-background-radius: 6px;
     -fx-background-color: #FFFFFF;
-    -fx-pref-width: 68px;
-    -fx-pref-height: 53px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
     -fx-font-size: 24px;
     -fx-text-fill: #6699FF;
     -fx-cursor: hand;
 }
 
 .button-icon {
-    -fx-pref-width: 60px;
-    -fx-pref-height: 42px;
+    -fx-pref-width: 95px;
+    -fx-pref-height: 50px;
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 6px;
     -fx-cursor: hand;
@@ -24,9 +24,8 @@
     -fx-pref-height: 36px;
     -fx-pref-width: 184px;
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 6px;
+    -fx-background-radius: 12px;
     -fx-cursor: hand;
-    -fx-translate-y: 2px;
 }
 
 .button-text:hover {

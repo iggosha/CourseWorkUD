@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.CustomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.CustomController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="656.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1080.0" AnchorPane.leftAnchor="0.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="800.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <effect>
             <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" width="255.0">
                <color>
@@ -23,7 +23,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="576.0" layoutX="118.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0" AnchorPane.topAnchor="72.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="800.0" layoutX="118.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0">
          <effect>
             <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" width="255.0">
                <color>
@@ -32,7 +32,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Rectangle fill="#527acc" height="72.0" strokeType="INSIDE" strokeWidth="0.0" width="1080.0">
+      <Rectangle fill="#527acc" height="100.0" strokeType="INSIDE" strokeWidth="0.0" width="1300.0" AnchorPane.topAnchor="0.0">
          <effect>
             <DropShadow blurType="GAUSSIAN" height="163.5" radius="104.125" width="255.0">
                <color>
@@ -41,13 +41,13 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="377.0" layoutY="14.0" stylesheets="@../../../css_files/text.css" text="Ручной ввод SQL-команд" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="216.0" />
-      <TableView fx:id="customQueryTable" editable="true" layoutX="118.0" layoutY="72.0" prefHeight="441.0" prefWidth="864.0" style="-fx-background-radius: 12;">
+      <Label alignment="CENTER" layoutX="377.0" layoutY="14.0" stylesheets="@../../../css_files/text.css" text="Ручной ввод SQL-команд" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="33.0" />
+      <TableView fx:id="customQueryTable" editable="true" layoutX="218.0" layoutY="190.0" prefHeight="441.0" prefWidth="864.0" style="-fx-background-radius: 12;">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="refreshButton" alignment="CENTER" ellipsisString="" layoutX="912.0" layoutY="10.0" mnemonicParsing="false" onAction="#makeTableView" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="9.0">
+      <Button fx:id="refreshButton" alignment="CENTER" ellipsisString="" layoutX="912.0" layoutY="10.0" mnemonicParsing="false" onAction="#makeTableView" styleClass="button-icon" stylesheets="@../../../css_files/button.css" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="25.0">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,9 +56,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="goToSelectsButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="9.0" />
-      <TextField fx:id="customQueryTextField" layoutX="119.0" layoutY="539.0" onAction="#makeCustomQuery" prefHeight="36.0" prefWidth="857.0" promptText="Введите SQL-команду" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" AnchorPane.bottomAnchor="144.0" />
-      <Button fx:id="infoButton" layoutX="998.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="9.0" />
-      <ComboBox fx:id="tablesComboBox" layoutX="119.0" layoutY="17.0" onAction="#makeTableView" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" />
+      <Button fx:id="goToSelectsButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="&lt;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" />
+      <TextField fx:id="customQueryTextField" layoutX="188.0" layoutY="760.0" onAction="#makeCustomQuery" prefHeight="36.0" prefWidth="857.0" promptText="Введите SQL-команду" styleClass="big-text-field" stylesheets="@../../../css_files/text_field.css" AnchorPane.bottomAnchor="95.0" />
+      <Button fx:id="infoButton" layoutX="998.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../../../css_files/button.css" text="🛈" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="25.0" />
+      <ComboBox fx:id="tablesComboBox" layoutX="218.0" layoutY="25.0" onAction="#makeTableView" prefHeight="36.0" prefWidth="258.0" promptText="Выбрать из доступных таблиц..." stylesheets="@../../../css_files/combo_box.css" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="33.0" />
    </children>
 </AnchorPane>
