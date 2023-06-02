@@ -32,7 +32,7 @@ public class CustomController {
                 """;
         tablesComboBox.getItems().addAll(utilsController.getTablesNames());
         tablesComboBox.getItems().addAll(utilsController.getViewsNames());
-        goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "table_selects.fxml"));
+        goToSelectsButton.setOnAction(actionEvent -> utilsController.openNewWindow(goToSelectsButton, "menu.fxml"));
         infoButton.setOnAction(actionEvent -> utilsController.showInstructionWindow(instruction));
     }
 

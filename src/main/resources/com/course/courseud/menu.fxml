@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #527ACC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: #527ACC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course.courseud.MenuController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="576.0" layoutX="108.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="864.0" AnchorPane.topAnchor="72.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6699ff" height="700.0" layoutX="108.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0">
             <effect>
                 <DropShadow blurType="GAUSSIAN" height="255.0" radius="127.0" width="255.0">
                     <color>
@@ -21,11 +21,8 @@
                 </DropShadow>
             </effect>
         </Rectangle>
-        <Rectangle fill="#ffffff00" height="72.0" layoutX="197.0" layoutY="112.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="692.0" AnchorPane.topAnchor="108.0" />
-        <Rectangle fill="#ffffff00" height="72.0" layoutX="197.0" layoutY="211.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="692.0" AnchorPane.topAnchor="216.0" />
-        <Rectangle fill="#ffffff00" height="72.0" layoutX="197.0" layoutY="324.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="692.0" AnchorPane.topAnchor="324.0" />
-        <Rectangle fill="#ffffff00" height="72.0" layoutX="198.0" layoutY="458.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="692.0" AnchorPane.topAnchor="432.0" />
-        <Rectangle fill="#6699ff" height="72.0" layoutY="13.0" strokeType="INSIDE" strokeWidth="0.0" width="1080.0" AnchorPane.topAnchor="0.0">
+        <Rectangle fill="#ffffff00" height="100.0" layoutX="197.0" layoutY="112.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="900.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="200.0" />
+        <Rectangle fill="#6699ff" height="100.0" layoutY="13.0" strokeType="INSIDE" strokeWidth="0.0" width="1300.0" AnchorPane.topAnchor="0.0">
             <effect>
                 <DropShadow blurType="GAUSSIAN" height="209.25" radius="115.5625" width="255.0">
                     <color>
@@ -34,57 +31,45 @@
                 </DropShadow>
             </effect>
         </Rectangle>
-        <Label alignment="CENTER" layoutX="497.0" layoutY="15.0" stylesheets="@../../../css_files/text.css" text="Меню" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="497.0" />
-        <Label alignment="CENTER" layoutX="439.0" layoutY="123.0" stylesheets="@../../../css_files/text.css" text="Добавление" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="123.0">
+      <Rectangle fill="#ffffff00" height="100.0" layoutX="197.0" layoutY="315.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="900.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="300.0" />
+      <Rectangle fill="#ffffff00" height="100.0" layoutX="200.0" layoutY="422.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="900.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="400.0" />
+      <Rectangle fill="#ffffff00" height="100.0" layoutX="197.0" layoutY="528.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-arc-height: 36; -fx-arc-width: 36;" width="900.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="500.0" />
+        <Label alignment="CENTER" layoutX="604.0" layoutY="29.0" stylesheets="@../../../css_files/text.css" text="Меню" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="25.0" />
+        <Label alignment="CENTER" layoutX="476.0" layoutY="229.0" stylesheets="@../../../css_files/text.css" text="Комнатные растения" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="229.0">
             <font>
                 <Font name="Candara" size="42.0" />
             </font>
         </Label>
-        <Label layoutX="384.0" layoutY="232.0" stylesheets="@../../../css_files/text.css" text="Просмотр и отчёты" textFill="WHITE" AnchorPane.leftAnchor="384.0" AnchorPane.topAnchor="232.0" />
-        <Label alignment="CENTER" layoutX="451.0" layoutY="340.0" stylesheets="@../../../css_files/text.css" text="Изменение" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="451.0" AnchorPane.topAnchor="340.0">
+        <Label layoutX="542.0" layoutY="531.0" stylesheets="@../../../css_files/text.css" text="Справочники" textFill="WHITE" AnchorPane.leftAnchor="542.0" AnchorPane.topAnchor="531.0" />
+        <Label alignment="CENTER" layoutX="499.0" layoutY="331.0" stylesheets="@../../../css_files/text.css" text="Болезни растений" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="499.0" AnchorPane.topAnchor="331.0">
             <font>
                 <Font name="Candara" size="42.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="458.0" layoutY="447.0" stylesheets="@../../../css_files/text.css" text="Удаление " textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="458.0" AnchorPane.topAnchor="447.0">
+        <Label alignment="CENTER" layoutX="484.0" layoutY="429.0" stylesheets="@../../../css_files/text.css" text="Уход за растениями" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="484.0" AnchorPane.topAnchor="429.0">
             <font>
                 <Font name="Segoe UI" size="42.0" />
             </font>
         </Label>
-        <Button fx:id="goToInsertsButton" layoutX="788.0" layoutY="118.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" stylesheets="@../../../css_files/button.css" text="&gt;" AnchorPane.topAnchor="118.0" />
-        <Button fx:id="goToSelectsButton" layoutX="788.0" layoutY="226.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="226.0" />
-        <Button fx:id="goToUpdatesButton" layoutX="788.0" layoutY="334.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="334.0" />
-        <Button fx:id="goToDeletesButton" layoutX="788.0" layoutY="442.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="108.0" style="-fx-cursor: hand;" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="442.0" />
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="216.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="441.0">
-            <image>
-                <Image url="@../../../icons/icons8-delete-document-100.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="217.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="225.0">
-            <image>
-                <Image url="@../../../icons/icons8-show-property-100.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="217.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="333.0">
-            <image>
-                <Image url="@../../../icons/icons8-edit-property-100.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="216.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="123.0">
-            <image>
-                <Image url="@../../../icons/icons8-add-properties-100.png" />
-            </image>
-        </ImageView>
-      <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="216.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+        <Button fx:id="goToCareButton" layoutX="1008.0" layoutY="416.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" stylesheets="@../../../css_files/button.css" text="&gt;" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="425.0" />
+        <Button fx:id="goToDisruptionsButton" layoutX="974.0" layoutY="335.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="325.0" />
+        <Button fx:id="goToDirectoriesButton" layoutX="1008.0" layoutY="525.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="525.0" />
+        <Button fx:id="goToPlantsButton" layoutX="1008.0" layoutY="224.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" style="-fx-cursor: hand;" stylesheets="@../../../css_files/button.css" text="&gt;" textFill="#596680" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="225.0" />
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="450.0">
          <image>
-            <Image url="@../../../icons/icons8-report-100.png" />
+            <Image url="@appicon.png" />
          </image>
       </ImageView>
-      <Button fx:id="goToGuestMenuButton" layoutY="640.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="0.0">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="1200.0" layoutY="402.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="450.0">
+         <image>
+            <Image url="@appicon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="goToCustomButton" layoutY="834.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" stylesheets="@../../../css_files/button.css">
          <graphic>
-            <ImageView fitHeight="72.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@appicon.png" />
+                  <Image url="@../../../icons/icons8-development-skill-100.png" />
                </image>
             </ImageView>
          </graphic>
